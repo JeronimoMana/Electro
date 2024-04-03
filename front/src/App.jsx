@@ -36,7 +36,7 @@ function App() {
         console.error('Error al obtener productos:', error);
       }
     };
-
+//sakda
     fetchProducts();
   }, []);
 
