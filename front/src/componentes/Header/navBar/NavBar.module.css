@@ -1,0 +1,43 @@
+.nav_container {
+    min-height: 40px;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    position: sticky;
+}
+
+.nav_container:nth-child(2) {
+    background-color: #15161d;
+    border-bottom: 2px solid var(--red);
+    padding: 0;
+}
+
+.bg {
+    background-color: #1e1f29;
+}
+
+.bg_text {
+    color: var(--white);
+    text-align: center;
+}
+
+.m_svg {
+    margin-right: 8px;
+}
+
+.wdt_shop {
+    width: 60px;
+}
+
+.wdt_shop span {
+    background-color: var(--red);
+}
+
+.wdt_shop :hover {
+    color: rgb(143, 36, 36);
+}
+
+.position {
+    left: 35px;
+    top: -2px;
+
+}

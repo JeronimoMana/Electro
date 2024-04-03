@@ -1,0 +1,15 @@
+.container_deseos {
+    min-height: 518px;
+}
+
+.container_deseos .span {
+    font-size: 25px;
+    font-weight: 700;
+    border-bottom: 1px solid rgb(206, 205, 205);
+    margin-top: 20px;
+}
+
+.container_deseos .p {
+    margin-top: 20px;
+    font-size: 20px;
+}

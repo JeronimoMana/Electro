@@ -1,0 +1,60 @@
+.container_shopping {
+    min-height: 518px;
+}
+
+.container_shopping .span {
+    font-size: 25px;
+    font-weight: 700;
+    border-bottom: 1px solid rgb(206, 205, 205);
+    margin-top: 20px;
+}
+
+.container_shopping .p {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.conatiner_lista button {
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 20px;
+    border: 1px solid rgb(206, 205, 205);
+    background-color: var(--red);
+    color: var(--white);
+    font-size: 20px;
+
+}
+
+.conatiner_lista button:hover {
+    background-color: rgb(129, 1, 1);
+}
+
+.containe_list {
+    border-left: 1px solid rgb(206, 205, 205);
+    padding-left: 10px;
+}
+
+.containe_list input {
+    border-radius: 5px;
+    border: 1px solid rgb(206, 205, 205);
+
+}
+
+.containe_list span {
+    font-size: 17px;
+}
+
+.containe_list button {
+    border-radius: 5px;
+    margin-left: 10px;
+    border: 1px solid rgb(206, 205, 205);
+    background-color: var(--red);
+    color: var(--white);
+    font-size: 15px;
+    height: 28px;
+}
+
+.containe_list button:hover {
+    background-color: rgb(129, 1, 1);
+}

@@ -1,0 +1,34 @@
+.navigation_container {
+    overflow: hidden;
+}
+
+
+
+.nav_main {
+    padding: 0;
+    margin-right: 20px;
+    color: #616161fa;
+    font-weight: 600;
+
+}
+
+.nav_main::after {
+    content: " ";
+    width: 100%;
+    height: 2px;
+    display: block;
+    background-image: linear-gradient(to right, transparent 50%, var(--red) 50%);
+    background-size: 200% 100%;
+    transition: background-position 0.5s ease-in-out;
+}
+
+.nav_main:hover::after {
+    background-position: -100% 0;
+
+}
+
+
+
+.nav_main:focus::after {
+    background-position: -100% 0;
+}

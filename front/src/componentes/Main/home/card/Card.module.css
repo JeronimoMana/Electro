@@ -1,0 +1,139 @@
+h2 {
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+    font-size: 22px;
+}
+
+.imgs {
+    object-fit: contain;
+    height: 270px;
+}
+
+
+
+.slider_container {
+    width: 300px;
+    min-height: 537px;
+    align-items: center;
+}
+
+.card {
+
+    z-index: 10;
+    border-radius: none;
+    height: 440px;
+}
+
+.add_card {
+    width: 91%;
+    position: absolute;
+    overflow: hidden;
+    top: 63%;
+    left: 2%;
+    transition: transform 0.5s ease;
+    background-color: #15161d;
+}
+
+.border {
+    border-top: 1px solid var(--red);
+    border-left: 1px solid var(--red);
+    border-right: 1px solid var(--red);
+
+}
+
+.card:hover+.add_card,
+.add_card:hover {
+    transform: translateY(115%);
+}
+
+.rankig {
+    position: relative;
+
+}
+
+.btn_card {
+    min-width: 200px;
+    min-height: 30px;
+    border: none;
+    background-color: var(--red);
+    border-radius: 20px;
+    color: var(--white);
+    font-weight: 500;
+}
+
+.btn_card:hover {
+    background-color: #a51015;
+}
+
+.z_index {
+    z-index: 10;
+    position: relative;
+}
+
+.rankig::after {
+    content: "";
+    position: absolute;
+    top: 48%;
+    left: 20%;
+    width: 60%;
+    height: 1px;
+    background-color: rgb(170, 170, 170);
+    z-index: 1;
+}
+
+.categories {
+    color: rgb(170, 170, 170);
+    font-size: 12px;
+}
+
+.brand {
+    font-weight: 700;
+}
+
+.price {
+    color: var(--red);
+    font-weight: 800;
+}
+
+.del_price {
+    color: rgb(170, 170, 170);
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.alerts {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
+.discount {
+    display: inline-block;
+    border: 1px solid var(--red);
+    margin: 10px 10px 0 0;
+    font-size: 12px;
+    color: var(--red);
+
+}
+
+.new {
+    display: inline-block;
+    background-color: var(--red);
+    color: var(--white);
+    margin: 10px 20px 0 0;
+    font-size: 12px;
+
+}
+
+@media screen and (max-width: 1024px) {
+    .slider_container {
+        width: 230px;
+        min-height: 537px;
+        align-items: center;
+    }
+}
+
