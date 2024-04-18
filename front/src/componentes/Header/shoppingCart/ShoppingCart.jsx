@@ -9,7 +9,19 @@ const ShoppingCart = () => {
     const [cartLocal, setCartLocal] = useState([]);
     const [envio, setEnvio] = useState(null);
     const [isDiv, setIsDiv] = useState(false);
+    const [width, setWidth] = useState(window.innerWidth)
     let total = 0;
+
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWidth(window.innerWidth);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [])
 
     const provinciasCostosEnvio = [
         { provincia: "Buenos Aires", costo: 50 },
@@ -66,32 +78,33 @@ const ShoppingCart = () => {
     return (
         <div className={`container-xl d-flex  flex-column ${style.container_shopping}`}>
             <span className={style.span}>CARRITO</span>
-            <div className="d-flex justify-content-between">
-                <div className="d-flex justify-content-start flex-wrap">
+            <div className={`d-flex justify-content-between ${width <= 500 ? "flex-column" : ""}`}>
+                <div className={`d-flex justify-content-start flex-wrap ${width <= 500 ? "row" : ""}`}>
                     {cartLocal.length > 0 ? cartLocal.map((product) => {
-                        total += Number(product.price.substr(1));
+                        total += Number(product.price.substr(0));
                         return (
-                            <Card key={product.id}
-                                id={product.id}
-                                img={product.img}
-                                category={product.category}
-                                brand={product.brand}
-                                price={product.price}
-                                oldprice={product.oldprice}
-                                ranking={product.ranking}
-                            />
+                            <div className={`${width <= 500 ? "col-6" : ""}`} >
+                                <Card key={product.id}
+                                    id={product.id}
+                                    img={product.img}
+                                    category={product.category}
+                                    brand={product.brand}
+                                    price={product.price}
+                                    oldprice={product.oldprice}
+                                    ranking={product.ranking}
+                                />
+
+                            </div>
                         );
                     }) : <p className={style.p}>No hay productos en tu carrito</p>}
                 </div>
-                <div className={style.conatiner_lista}>
+                <div className={`${style.conatiner_lista} ${width <= 500 ? "mb-5" : ""}`}>
                     <h3 className="mt-3">Lista de Productos</h3>
-
                     <div className={style.containe_list}>
                         <p className={style.p}> Sub Total : <span>${total}</span> </p>
                         {envio === null ?
                             <div>
                                 <p className={style.p}>Calcular Envío: <span>Ingrese su codigo postal</span></p>
-
                                 <input id="valorEnvio" type="number" placeholder="5000" />
                                 <button onClick={handleEnvio}>Calcular</button>
                             </div> :
@@ -104,8 +117,6 @@ const ShoppingCart = () => {
                         window.alert("Su compra fue realizado con éxito")
                         setCartLocal([])
                     }}>Comprar</button>
-
-
                 </div>
             </div>
         </div>

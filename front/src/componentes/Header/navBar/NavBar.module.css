@@ -44,9 +44,9 @@
 
 .nav_container .hamburguesa {
     margin-bottom: 15px;
+
     & li {
         font-size: 20px;
         font-weight: 600;
-        color: var(--white);
     }
 }

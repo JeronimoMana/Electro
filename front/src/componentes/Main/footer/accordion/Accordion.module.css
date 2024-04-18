@@ -1,6 +1,6 @@
 .item {
     height: 60px;
-    border: 1px solid red;
+    border-bottom: 1px solid rgb(179, 4, 4);
     overflow: hidden;
 
 }
@@ -22,10 +22,11 @@
 }
 
 .info_accordion {
-    
+
     & ul {
         margin-left: 15px;
         margin-bottom: 15px;
+
         & li {
             font-size: 17px;
         }
