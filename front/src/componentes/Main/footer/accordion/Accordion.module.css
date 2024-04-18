@@ -1,0 +1,33 @@
+.item {
+    height: 60px;
+    border: 1px solid red;
+    overflow: hidden;
+
+}
+
+@keyframes expande {
+    0% {
+        height: 60px;
+    }
+
+
+    100% {
+
+        height: 150px;
+    }
+}
+
+.expanded {
+    animation: expande ease-in 0.5s forwards;
+}
+
+.info_accordion {
+    
+    & ul {
+        margin-left: 15px;
+        margin-bottom: 15px;
+        & li {
+            font-size: 17px;
+        }
+    }
+}

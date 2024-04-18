@@ -1,11 +1,9 @@
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
 import style from './Collection.module.css'
 
 
 
 const Collections = () => {
-    const allproduct = useSelector((state) => state.allProducts)
     const [isHover, setIsHover] = useState(false)
     const handleHover = () => {
         if (!isHover) {
@@ -17,7 +15,7 @@ const Collections = () => {
     return (
         <div className={`container-fluid`}>
             <div className="container-xxl mt-5">
-                <div className="row row row-cols-1 row-cols-md-3 g-4">
+                <div className="row row row-cols-1 row-cols-md-3 g-4 ms-5">
                     <div className="col">
                         <div className={`card h-100 ${style.card_decoration}`}>
                             <img src="../../../../../img/product01.png" className={style.wdt_img} alt="asdasd" />

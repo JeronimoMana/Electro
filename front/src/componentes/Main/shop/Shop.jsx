@@ -6,15 +6,16 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import PropTypes from 'prop-types';
 import { NavLink, useLocation } from "react-router-dom";
-import Nouislider from "nouislider-react";
-import "nouislider/distribute/nouislider.css";
+
 import styles from './Shop.module.css'
 
 const Shop = ({ prop }) => {
 
     const [porductFilter, setProductFilter] = useState([])
+    const [width, setWidth] = useState(window.innerWidth)
     const allProducts = useSelector((product) => product.allProducts)
     const { pathname } = useLocation()
+
 
     const countCategory = (category) => {
         const productCount = allProducts.filter((prduct) => prduct.category === category)
@@ -43,6 +44,15 @@ const Shop = ({ prop }) => {
                 break;
         }
     }
+    useEffect(() => {
+        const handleResize = () => {
+            setWidth(window.innerWidth);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [])
 
     useEffect(() => {
         filtar(pathname)
@@ -50,37 +60,7 @@ const Shop = ({ prop }) => {
             setProductFilter([])
         })
     }, [pathname])
-
-
-    const [minPrice, setMinPrice] = useState(0);
-    const [maxPrice, setMaxPrice] = useState(1000);
-
-
-    const handleSliderChange = (values) => {
-        const [newMinPrice, newMaxPrice] = values;
-        setMinPrice(parseInt(newMinPrice));
-        setMaxPrice(parseInt(newMaxPrice));
-    };
-
-
-
-
-
-    const handleMinPriceChange = (event) => {
-        const newValue = event.target.value;
-        if (!isNaN(newValue) || newValue === '') {
-            setMinPrice(newValue === '' ? '' : parseInt(newValue));
-        }
-    };
-
-    const handleMaxPriceChange = (event) => {
-        const newValue = event.target.value;
-        if (!isNaN(newValue) || newValue === '') {
-            setMaxPrice(newValue === '' ? '' : parseInt(newValue));
-        }
-    };
-
-
+    console.log(width)
     return (
         <div >
             <Navigation />
@@ -95,53 +75,19 @@ const Shop = ({ prop }) => {
             <div className="container-xl">
 
                 <div className="row">
-                    <div className="col-md-3 ps-1 mt-3">
+                    {width > 500 ? <div className="col-md-3 ps-1 mt-3">
                         <h4>CATEGORIAS</h4>
                         <NavLink to="/shop_notebook"><p>NOTEBOOK({countCategory("Notebook")})</p></NavLink>
                         <NavLink to="/shop_camera"><p>CAMERA({countCategory("Camera")})</p></NavLink>
                         <NavLink to="/shop_smartphone"><p>SMARTPHONE({countCategory("Smartphone")})</p></NavLink>
                         <NavLink to="/shop_accesories"><p>ACCESORIOS({countCategory("Accesories")})</p></NavLink>
                         <NavLink to="/shop_all"><p>ALL({allProducts.length})</p></NavLink>
-                        <div className={styles.price_filter}>
-                            <h4>PRECIO</h4>
-                            <Nouislider
-                                connect
-                                start={[minPrice, maxPrice]}
-                                range={{ min: 0, max: 1000 }}
-                                onUpdate={handleSliderChange}
-                            />
-                            <div className={`position-relative mt-4 ${styles.input_container}`}>
-                                <input
-                                    id="price-min"
-                                    type="numeric"
-                                    className={styles.min_price}
-                                    value={minPrice}
-                                    onChange={handleMinPriceChange}
-
-                                />
-                                <span className={styles.btn_up}>+</span>
-                                <span className={styles.btn_down}>-</span>
-                            </div>
-                            <span className="mx-2">-</span>
-                            <div className={`position-relative ${styles.input_bt_container}`}>
-                                <input
-                                    id="price-max"
-                                    type="numeric"
-                                    className={styles.min_price}
-                                    value={maxPrice}
-                                    onChange={handleMaxPriceChange}
-                                />
-                                <span className={styles.btn_up}>+</span>
-                                <span className={styles.btn_down}>-</span>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div className="col-md-8">
-                        <div className="row">
-                            {porductFilter.map((product) => {
+                    </div> : ""}
+                    <div className={`${width > 500 ? "col-md-9 d-flex flex-wrap" : "d-flex flex-wrap"}`} >
+                        {
+                            porductFilter.map((product) => {
                                 return (
-                                    <div className="col-md-4" key={product.id}>
+                                    <div className={`${width <= 500 ? "col-6" : ""}`} key={product.id}>
                                         <Card
                                             id={product.id}
                                             img={product.img}
@@ -153,9 +99,8 @@ const Shop = ({ prop }) => {
                                         />
                                     </div>
                                 );
-                            })}
-
-                        </div>
+                            })
+                        }
                     </div>
                 </div>
             </div>
